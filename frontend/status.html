@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Carbon Status</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>Carbon Status</header>
+
+<div class="card">
+
+  <!-- TOTAL USAGE -->
+  <h2 id="total"></h2>
+
+  <!-- SIGNAL (LOW / MEDIUM / HIGH) -->
+  <h3 id="signal"></h3>
+
+  <!-- SMART GUIDANCE MESSAGE -->
+  <p id="guidance" style="margin-top:15px; font-size:15px; color:#333;"></p>
+
+  <a class="btn" href="suggestions.html">View Smart Reduction Tips</a>
+
+</div>
+
+<script>
+  /* DAILY LIMIT (same as script.js) */
+  const DAILY_LIMIT = 10;
+
+  const electricity = Number(localStorage.getItem("electricity") || 0);
+  const transport = Number(localStorage.getItem("transport") || 0);
+  const events = Number(localStorage.getItem("events") || 0);
+
+  const used = electricity + transport + events;
+  const remaining = Math.max(DAILY_LIMIT - used, 0);
+
+  document.getElementById("total").innerText =
+    `Today's Carbon Usage: ${used} / ${DAILY_LIMIT}`;
+
+  const signal = document.getElementById("signal");
+  const guidance = document.getElementById("guidance");
+
+  if (used <= 5) {
+    signal.innerText = "🟢 Low Impact";
+    signal.style.color = "green";
+    guidance.innerText =
+      "Great job! Your carbon usage is well under control today. Continue following sustainable habits.";
+  }
+  else if (used <= 8) {
+    signal.innerText = "🟡 Medium Impact";
+    signal.style.color = "orange";
+    guidance.innerText =
+      `You are approaching today's carbon budget. For remaining activities, prefer low-impact options like walking, shared transport, or reducing electricity usage. Remaining budget: ${remaining}`;
+  }
+  else {
+    signal.innerText = "🔴 High Impact";
+    signal.style.color = "red";
+    guidance.innerText =
+      "You have crossed today's recommended carbon budget. This system does not restrict your activities, but suggests choosing low-impact options for the rest of the day, such as walking, minimizing electricity use, or avoiding unnecessary indoor events.";
+  }
+</script>
+
+</body>
+</html>

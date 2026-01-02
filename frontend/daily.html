@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Daily Electricity Usage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>Daily Electricity Usage</header>
+
+<!-- ELECTRICITY IMAGE -->
+<img class="page-img"
+     src=https://www.shutterstock.com/image-photo/laptop-computer-charging-220volt-outlet-260nw-1677167428.jpg alt="Daily electricity usage laptop fan light">
+
+<div class="card">
+
+  <label>Did you use AC today?</label>
+  <select id="ac">
+    <option value="0">No</option>
+    <option value="3">Yes</option>
+  </select>
+
+  <label>How long did you use your laptop?</label>
+  <select id="laptop">
+    <option value="1">Less than 2 hours</option>
+    <option value="2">2–4 hours</option>
+    <option value="3">More than 4 hours</option>
+  </select>
+
+  <label>Lights and fan usage level</label>
+  <select id="lights">
+    <option value="1">Low</option>
+    <option value="2">Medium</option>
+    <option value="3">High</option>
+  </select>
+
+  <button onclick="saveDaily()">Next: Events</button>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

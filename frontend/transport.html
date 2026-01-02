@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Daily Transport</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>Daily Transport</header>
+<img class="page-img"
+  src=https://www.thestatesman.com/wp-content/uploads/2021/11/DMF-Schoool-Bus-for-Koira-Block-1.jpg  alt="Students using bus auto bike">
+
+<div class="card">
+
+  <label>Mode of Transport</label>
+  <select id="mode">
+    <option value="0">Walking</option>
+    <option value="1">Bike</option>
+    <option value="2">Bus</option>
+    <option value="3">Auto</option>
+    <option value="4">Car</option>
+  </select>
+
+  <label>Distance Travelled</label>
+  <select id="distance">
+    <option value="1">0–5 km</option>
+    <option value="2">5–10 km</option>
+    <option value="3">10–20 km</option>
+    <option value="4">20-100km</option>
+  </select>
+
+  <label>Number of Trips</label>
+  <select id="trips">
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">More</option>
+  </select>
+
+  <button type="button" onclick="saveTransport()">View Dashboard</button>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
