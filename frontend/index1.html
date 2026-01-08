@@ -6,31 +6,6 @@
 </head>
 <body>
 
-<!-- Firebase SDKs (COMPAT – SAME AS LOGIN) -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-
-<script>
-  // 🔥 SAME Firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyACroio1Xvsd24hYfwHI30XZH36uHexd9A",
-    authDomain: "carbon-emission-tracker-16f89.firebaseapp.com",
-    projectId: "carbon-emission-tracker-16f89",
-  };
-
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-  }
-
-  // 🔒 AUTH GUARD (FIXED)
-  firebase.auth().onAuthStateChanged(user => {
-    if (!user) {
-      // not logged in → go to login
-      window.location.href = "indx.html";
-    }
-  });
-</script>
-
 <header>Campus Carbon Reduction & Awareness Platform</header>
 
 <section class="hero">
@@ -47,11 +22,10 @@
     students can significantly reduce campus carbon emissions over time.
   </p>
 
-  <a class="btn" href="daily.html">Begin Carbon Awareness</a>
+  <a class="btn begin-btn" href="daily.html">Begin Carbon Awareness</a>
 </section>
 
 <section class="image-row">
-
   <div class="image-card">
     <img src="https://robots.net/wp-content/uploads/2020/09/Charging-Fixes-for-Windows-and-Mac.jpg">
     <p>Electricity Usage</p>
@@ -66,7 +40,6 @@
     <img src="https://tse3.mm.bing.net/th/id/OIP.4Zd0XtyPkZqaHlCebnSTAgHaEi?pid=Api&P=0&h=180">
     <p>Daily Transport</p>
   </div>
-
 </section>
 
 <script type="module" src="script.js"></script>

@@ -1094,6 +1094,33 @@ input:focus {
   font-weight: 600;
   text-decoration: none;
 }
+.auth-wrapper {
+  position: relative;
+}
+
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: white;
+  color: #2e7d32;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 25px;
+  text-decoration: none;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+  transition: all 0.25s ease;
+}
+
+.back-btn:hover {
+  background: #2e7d32;
+  color: #fff;
+  transform: translateX(-4px);
+}
 
 /* ===============================
    RESPONSIVE
@@ -1113,3 +1140,45 @@ input:focus {
     margin: auto;
   }
 }
+.begin-btn {
+  display: inline-block;
+  padding: 20px 48px;              /* ⬆ size increase */
+  font-size: 20px;                 /* ⬆ text bigger */
+  font-weight: 700;
+  border-radius: 18px;             /* ⬆ smooth corners */
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  color: #ffffff;
+  text-decoration: none;
+  box-shadow: 0 14px 30px rgba(46,125,50,0.45);
+  transition: all 0.3s ease;
+}
+
+.auth-card {
+  position: relative;
+}
+
+.back-btn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+
+  padding: 12px 18px;          /* 🔥 bigger size */
+  background: #e8f5e9;         /* 🔥 light green bg */
+  color: #1b5e20;              /* dark green text */
+  font-size: 16px;             /* 🔥 bigger text */
+  font-weight: 700;
+
+  border-radius: 22px;
+  text-decoration: none;
+  box-shadow: 0 6px 14px rgba(46,125,50,0.25);
+
+  transition: all 0.25s ease;
+}
+
+.back-btn:hover {
+  background: #2e7d32;
+  color: #ffffff;
+  transform: translateX(-6px);
+}
+
+

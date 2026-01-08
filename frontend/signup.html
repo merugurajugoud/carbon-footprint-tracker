@@ -26,7 +26,6 @@
   </style>
 </head>
 <body>
-  
 
 <div class="auth-wrapper">
   <div class="auth-card">
@@ -35,7 +34,7 @@
       Join the campus carbon awareness platform
     </p>
 
-    <form autocomplete="off">
+    <form autocomplete="off" autofill="off">
 
       <!-- EMAIL -->
       <div class="form-group">
@@ -43,8 +42,11 @@
         <input
           type="email"
           id="email"
+          name="email_fake"
           placeholder="Enter your email address"
-          autocomplete="off"
+          autocomplete="new-email"
+          readonly
+          onfocus="this.removeAttribute('readonly')"
         >
       </div>
 
@@ -55,8 +57,11 @@
           <input
             type="password"
             id="password"
-            placeholder="enter your password"
+            name="password_fake"
+            placeholder="Enter your password"
             autocomplete="new-password"
+            readonly
+            onfocus="this.removeAttribute('readonly')"
           >
           <span class="toggle-password"
                 onclick="togglePassword('password', this)">Show</span>
@@ -70,8 +75,11 @@
           <input
             type="password"
             id="confirmPassword"
+            name="confirm_fake"
             placeholder="Confirm your password"
             autocomplete="new-password"
+            readonly
+            onfocus="this.removeAttribute('readonly')"
           >
           <span class="toggle-password"
                 onclick="togglePassword('confirmPassword', this)">Show</span>
@@ -87,7 +95,6 @@
         Create Account
       </button>
 
-
     </form>
 
     <p class="auth-footer">
@@ -97,11 +104,29 @@
   </div>
 </div>
 
+<!-- 🔥 FIREBASE SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
 <script>
+   const firebaseConfig = {
+    apiKey: "AIzaSyACroio1Xvsd24hYfwHI30XZH36uHexd9A",
+    authDomain: "carbon-emission-tracker-16f89.firebaseapp.com",
+    projectId: "carbon-emission-tracker-16f89",
+    storageBucket: "carbon-emission-tracker-16f89.firebasestorage.app",
+    messagingSenderId: "784942251390",
+    appId: "1:784942251390:web:d2b5b61e79d03c528b072f"
+  };
+
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+
+  // ✅ CLEAR FIELDS ON LOAD
   window.onload = function () {
-    document.querySelectorAll("input").forEach(input => {
-      input.value = "";
-    });
+    document.getElementById("email").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("confirmPassword").value = "";
   };
 
   function togglePassword(inputId, btn) {
@@ -115,58 +140,49 @@
     }
   }
 
- function createAccount() {
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
-  const confirmPassword =
-    document.getElementById("confirmPassword").value.trim();
-  const msg = document.getElementById("msg");
+  function createAccount() {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const confirmPassword =
+      document.getElementById("confirmPassword").value.trim();
+    const msg = document.getElementById("msg");
 
-  msg.style.color = "red";
-  msg.innerText = "";
+    msg.style.color = "red";
+    msg.innerText = "";
 
-  // 1️⃣ EMPTY CHECK
-  if (!email || !password || !confirmPassword) {
-    msg.innerText = "Please fill all the details.";
-    return;
+    if (!email || !password || !confirmPassword) {
+      msg.innerText = "Please fill all the details.";
+      return;
+    }
+
+    if (!email.includes("@")) {
+      msg.innerText = "Please enter a valid email address.";
+      return;
+    }
+
+    if (password.length < 6) {
+      msg.innerText = "Password must be at least 6 characters.";
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      msg.innerText = "Passwords do not match.";
+      return;
+    }
+
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        msg.style.color = "green";
+        msg.innerText = "Account created successfully!";
+
+        setTimeout(() => {
+          window.location.href = "indx.html";
+        }, 1200);
+      })
+      .catch(error => {
+        msg.innerText = error.message;
+      });
   }
-
-  // 2️⃣ EMAIL CHECK
-  if (!email.includes("@")) {
-    msg.innerText = "Please enter a valid email address.";
-    return;
-  }
-
-  // 3️⃣ PASSWORD LENGTH
-  if (password.length < 6) {
-    msg.innerText = "Password must be at least 6 characters.";
-    return;
-  }
-
-  // 4️⃣ PASSWORD MATCH
-  if (password !== confirmPassword) {
-    msg.innerText = "Passwords do not match.";
-    return;
-  }
-
-  // ✅ 5️⃣ FIREBASE SIGNUP (MOST IMPORTANT)
-  firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then(() => {
-      msg.style.color = "green";
-      msg.innerText = "Account created successfully!";
-
-      // auto redirect after signup
-      setTimeout(() => {
-        window.location.href = "index1.html";
-      }, 1200);
-    })
-    .catch((error) => {
-      msg.innerText = error.message;
-    });
-}
-
-
-
 </script>
 
 </body>

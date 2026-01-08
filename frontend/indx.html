@@ -5,14 +5,12 @@
   <title>Login | Carbon Tracker</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    body 
-    {
+    body {
       background: #eef7ee;
       font-family: "Segoe UI", Arial, sans-serif;
     }
 
-    .auth-wrapper 
-    {
+    .auth-wrapper {
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -28,21 +26,20 @@
       box-shadow: 0 20px 45px rgba(0,0,0,0.1);
     }
 
-    .auth-card h2 
-    {
+    .auth-card h2 {
       font-size: 28px;
       font-weight: 700;
       margin-bottom: 12px;
       color: #1b5e20;
     }
-    .subtitle 
-    {
+
+    .subtitle {
       font-size: 16px;
       color: #5f6f81;
       margin-bottom: 28px;
     }
-    .auth-card input 
-    {
+
+    .auth-card input {
       width: 100%;
       padding: 14px;
       margin: 12px 0;
@@ -50,8 +47,8 @@
       border: 1px solid #ccc;
       font-size: 15px;
     }
-    .primary-btn 
-    {
+
+    .primary-btn {
       width: 100%;
       padding: 15px;
       margin-top: 22px;
@@ -64,12 +61,12 @@
       cursor: pointer;
       box-shadow: 0 8px 18px rgba(46,125,50,0.3);
     }
-    .primary-btn:hover 
-    {
+
+    .primary-btn:hover {
       background: #1b5e20;
     }
-    #msg 
-    {
+
+    #msg {
       font-size: 14px;
       margin-top: 10px;
       color: red;
@@ -77,14 +74,38 @@
   </style>
 </head>
 <body>
+
+
 <div class="auth-wrapper">
   <div class="auth-card">
-
+  
+<a href="index.html" class="back-btn">
+  ← Back 
+</a>
     <h2>Welcome Back</h2>
     <p class="subtitle">Track your daily carbon footprint</p>
 
-    <input type="email" id="email" placeholder="Email address">
-    <input type="password" id="password" placeholder="Password">
+    <!-- EMAIL (AUTOFILL BLOCKED) -->
+    <input
+      type="email"
+      id="email"
+      name="email_fake"
+      placeholder="Email address"
+      autocomplete="new-email"
+      readonly
+      onfocus="this.removeAttribute('readonly')"
+    >
+
+    <!-- PASSWORD (AUTOFILL BLOCKED) -->
+    <input
+      type="password"
+      id="password"
+      name="password_fake"
+      placeholder="Password"
+      autocomplete="new-password"
+      readonly
+      onfocus="this.removeAttribute('readonly')"
+    >
 
     <p id="msg"></p>
     <button class="primary-btn" onclick="login()">Login</button>
@@ -94,6 +115,14 @@
 <!-- Firebase SDKs -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+<!-- Clear autofill on load -->
+<script>
+  window.onload = function () {
+    document.getElementById("email").value = "";
+    document.getElementById("password").value = "";
+  };
+</script>
 
 <!-- Auth Logic -->
 <script src="auth.js"></script>
