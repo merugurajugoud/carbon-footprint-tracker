@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Account | Carbon Tracker</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .password-wrapper {
+      position: relative;
+    }
+    .password-wrapper input {
+      width: 100%;
+      padding-right: 55px;
+    }
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 13px;
+      color: #666;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  
+
+<div class="auth-wrapper">
+  <div class="auth-card">
+    <h2>Create New Account</h2>
+    <p class="auth-subtitle">
+      Join the campus carbon awareness platform
+    </p>
+
+    <form autocomplete="off">
+
+      <!-- EMAIL -->
+      <div class="form-group">
+        <label>Email Address</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email address"
+          autocomplete="off"
+        >
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="form-group">
+        <label>Create Password</label>
+        <div class="password-wrapper">
+          <input
+            type="password"
+            id="password"
+            placeholder="enter your password"
+            autocomplete="new-password"
+          >
+          <span class="toggle-password"
+                onclick="togglePassword('password', this)">Show</span>
+        </div>
+      </div>
+
+      <!-- CONFIRM PASSWORD -->
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <div class="password-wrapper">
+          <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm your password"
+            autocomplete="new-password"
+          >
+          <span class="toggle-password"
+                onclick="togglePassword('confirmPassword', this)">Show</span>
+        </div>
+      </div>
+
+      <!-- MESSAGE -->
+      <p id="msg" style="color:red; font-size:14px;"></p>
+
+      <button type="button"
+              class="primary-btn"
+              onclick="createAccount()">
+        Create Account
+      </button>
+
+
+    </form>
+
+    <p class="auth-footer">
+      Already have an account?
+      <a href="indx.html">Login</a>
+    </p>
+  </div>
+</div>
+
+<script>
+  window.onload = function () {
+    document.querySelectorAll("input").forEach(input => {
+      input.value = "";
+    });
+  };
+
+  function togglePassword(inputId, btn) {
+    const input = document.getElementById(inputId);
+    if (input.type === "password") {
+      input.type = "text";
+      btn.innerText = "Hide";
+    } else {
+      input.type = "password";
+      btn.innerText = "Show";
+    }
+  }
+
+ function createAccount() {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const confirmPassword =
+    document.getElementById("confirmPassword").value.trim();
+  const msg = document.getElementById("msg");
+
+  msg.style.color = "red";
+  msg.innerText = "";
+
+  // 1️⃣ EMPTY CHECK
+  if (!email || !password || !confirmPassword) {
+    msg.innerText = "Please fill all the details.";
+    return;
+  }
+
+  // 2️⃣ EMAIL CHECK
+  if (!email.includes("@")) {
+    msg.innerText = "Please enter a valid email address.";
+    return;
+  }
+
+  // 3️⃣ PASSWORD LENGTH
+  if (password.length < 6) {
+    msg.innerText = "Password must be at least 6 characters.";
+    return;
+  }
+
+  // 4️⃣ PASSWORD MATCH
+  if (password !== confirmPassword) {
+    msg.innerText = "Passwords do not match.";
+    return;
+  }
+
+  // ✅ 5️⃣ FIREBASE SIGNUP (MOST IMPORTANT)
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(() => {
+      msg.style.color = "green";
+      msg.innerText = "Account created successfully!";
+
+      // auto redirect after signup
+      setTimeout(() => {
+        window.location.href = "index1.html";
+      }, 1200);
+    })
+    .catch((error) => {
+      msg.innerText = error.message;
+    });
+}
+
+
+
+</script>
+
+</body>
+</html>

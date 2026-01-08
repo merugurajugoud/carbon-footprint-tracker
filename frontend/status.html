@@ -13,18 +13,31 @@
   <!-- TOTAL USAGE -->
   <h2 id="total"></h2>
 
-  <!-- SIGNAL (LOW / MEDIUM / HIGH) -->
+  <!-- SIGNAL -->
   <h3 id="signal"></h3>
 
   <!-- SMART GUIDANCE MESSAGE -->
-  <p id="guidance" style="margin-top:15px; font-size:15px; color:#333;"></p>
+  <p id="guidance" style="margin-top:15px; font-size:18px; color:#333; line-height:1.6;"></p>
+
+  <!-- 🔥 MAJOR IMPACT SECTION -->
+  <div id="impactSection" style="margin-top:25px; text-align:center;">
+    
+    <div id="impactImages"
+      style="display:flex; justify-content:center; gap:30px; flex-wrap:wrap; margin-bottom:15px;">
+    </div>
+
+    <p id="impactText"
+       style="font-size:18px; line-height:1.6; color:#444;">
+    </p>
+
+  </div>
 
   <a class="btn" href="suggestions.html">View Smart Reduction Tips</a>
 
 </div>
 
 <script>
-  /* DAILY LIMIT (same as script.js) */
+  /* ================= EXISTING CODE (UNCHANGED) ================= */
   const DAILY_LIMIT = 10;
 
   const electricity = Number(localStorage.getItem("electricity") || 0);
@@ -35,7 +48,7 @@
   const remaining = Math.max(DAILY_LIMIT - used, 0);
 
   document.getElementById("total").innerText =
-    `Today's Carbon Usage: ${used} / ${DAILY_LIMIT}`;
+    `Today's Carbon Usage: ${used.toFixed(2)} / ${DAILY_LIMIT}`;
 
   const signal = document.getElementById("signal");
   const guidance = document.getElementById("guidance");
@@ -50,14 +63,93 @@
     signal.innerText = "🟡 Medium Impact";
     signal.style.color = "orange";
     guidance.innerText =
-      `You are approaching today's carbon budget. For remaining activities, prefer low-impact options like walking, shared transport, or reducing electricity usage. Remaining budget: ${remaining}`;
+      `You are approaching today's carbon budget. Prefer low-impact options for the rest of the day. Remaining budget: ${remaining.toFixed(2)}.`;
   }
   else {
     signal.innerText = "🔴 High Impact";
     signal.style.color = "red";
     guidance.innerText =
-      "You have crossed today's recommended carbon budget. This system does not restrict your activities, but suggests choosing low-impact options for the rest of the day, such as walking, minimizing electricity use, or avoiding unnecessary indoor events.";
+      "You have crossed today's recommended carbon budget. Consider choosing low-impact alternatives for the rest of the day.";
   }
+
+  const sources = [
+    {
+      name: "Electricity",
+      value: electricity,
+      img: "https://cdn-icons-png.flaticon.com/512/1046/1046857.png",
+      text: "High electricity usage from ACs, fans, and devices has significantly increased today’s carbon footprint."
+    },
+    {
+      name: "Transport",
+      value: transport,
+      img: "https://cdn-icons-png.flaticon.com/512/3063/3063822.png",
+      text: "Frequent travel using fuel-based transport has contributed heavily to today’s emissions."
+    },
+    {
+      name: "Events",
+      value: events,
+      img: "https://cdn-icons-png.flaticon.com/512/2921/2921222.png",
+      text: "Indoor or long-duration events increased carbon impact due to lighting and cooling usage."
+    }
+  ];
+
+  sources.sort((a, b) => b.value - a.value);
+  const topSources = sources.filter(s => s.value > 0).slice(0, 2);
+
+  const imgBox = document.getElementById("impactImages");
+  const textBox = document.getElementById("impactText");
+
+  imgBox.innerHTML = "";
+  textBox.innerHTML = "";
+
+  topSources.forEach(src => {
+    const img = document.createElement("img");
+    img.src = src.img;
+    img.alt = src.name;
+    img.style.width = "110px";
+    imgBox.appendChild(img);
+  });
+
+  if (topSources.length === 1) {
+    textBox.innerHTML = `
+      <strong>${topSources[0].name}</strong> is the main contributor to your carbon emissions today.
+      ${topSources[0].text}
+    `;
+  }
+  else if (topSources.length === 2) {
+    textBox.innerHTML = `
+      Today’s carbon emissions are mainly influenced by
+      <strong>${topSources[0].name}</strong> and <strong>${topSources[1].name}</strong>.
+      ${topSources[0].text} Additionally, ${topSources[1].text}
+      <br><br>
+      Try switching to low-impact choices for the remaining part of the day.
+    `;
+  }
+</script>
+
+<!-- ================= 🔥 ADDITION ONLY (NEAT SMALL IMAGES) ================= -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const imgs = document.querySelectorAll("#impactImages img");
+
+    imgs.forEach(img => {
+      if (img.alt === "Electricity") {
+        img.src = "https://www.goldmedalindia.com/blog/wp-content/uploads/2023/05/Which-home-appliances-use-the-most-electricity-new.jpg";
+      }
+      if (img.alt === "Transport") {
+        img.src = "https://tse1.mm.bing.net/th/id/OIP.RtOegukht7pUKb4s_qSyxQHaHa?pid=Api&P=0&h=180";
+      }
+      if (img.alt === "Events") {
+        img.src = "https://tse2.mm.bing.net/th/id/OIP.OoCyK8oHShCVC4ihRkSgZgHaES?pid=Api&P=0&h=180";
+      }
+
+      /* 🔥 VERY SMALL & NEAT SIZE */
+      img.style.width = "70px";
+      img.style.height = "70px";
+      img.style.objectFit = "cover";
+      img.style.borderRadius = "8px";
+    });
+  });
 </script>
 
 </body>

@@ -9,16 +9,24 @@
 
 <header>Carbon Impact Dashboard</header>
 
+<!-- GRAPH SELECT DROPDOWN -->
+<select id="chartType"
+  style="margin:20px auto;display:block;padding:10px; font-size:16px; border-radius:5px;">
+  
+  <option value="pie">Pie Chart</option>
+  <option value="bar">Bar Graph</option>
+  <option value="line">Line Chart</option>
+  <option value="scatter">Scatter Plot</option>
+
+</select>
+
 <div class="chart-box">
   <canvas id="pieChart"></canvas>
 </div>
 
-<div class="chart-box">
-  <canvas id="barChart"></canvas>
-</div>
-
-<a class="btn" href="status.html">Check Status</a>
+<a class="center-btn" href="status.html">Check Status</a>
 
 <script src="script.js"></script>
+
 </body>
 </html>

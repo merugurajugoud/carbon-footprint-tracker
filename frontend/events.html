@@ -5,30 +5,48 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <header>Campus Events</header>
-<!-- EVENT IMAGE -->
+
 <img class="page-img"
-     src="https://tse1.mm.bing.net/th/id/OIP.pZsEX5wqPd6Tq7zhrUksfwHaEa?pid=Api&P=0&h=180"
-     alt="College event auditorium with students">
+  src="https://tse1.mm.bing.net/th/id/OIP.pZsEX5wqPd6Tq7zhrUksfwHaEa?pid=Api&P=0&h=180"
+  alt="College event auditorium with students">
+
 <div class="card">
   <label>Did you attend any event today?</label>
-  <select id="attend">
+  <select id="attend" onchange="handleEventChoice()">
+    <option value="">Select</option>
     <option value="0">No</option>
     <option value="2">Yes</option>
   </select>
-  <label>Event location</label>
-  <select id="venue">
-    <option value="1">Open Area</option>
-    <option value="2">Indoor Auditorium</option>
-  </select>
-  <label>Event duration</label>
-  <select id="duration">
-    <option value="1">1–2 hours</option>
-    <option value="2">3–4 hours</option>
-    <option value="3">More than 4 hours</option>
-  </select>
-  <button onclick="saveEvent()">Next: Transport</button>
+
+  <!-- EVENT DETAILS (HIDDEN BY DEFAULT) -->
+  <div id="eventDetails" style="display:none; margin-top:15px;">
+    <label>Event location</label>
+    <select id="venue">
+      <option value="1">Open Area</option>
+      <option value="2">Indoor Auditorium</option>
+    </select>
+
+    <label>Event duration</label>
+    <select id="duration">
+      <option value="1">1–2 hours</option>
+      <option value="2">3–4 hours</option>
+      <option value="3">More than 4 hours</option>
+    </select>
+  </div>
+
+  <!-- NEXT BUTTON (NO EXTRA TEXT) -->
+  <button type="button"
+        id="nextEventBtn"
+        style="display:none; margin-top:20px;"
+        onclick="saveEvent()">
+  Next
+</button>
+
 </div>
-<script src="script.js"></script>
+
+<script type="module" src="script.js"></script>
+
 </body>
 </html>

@@ -1,44 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Daily Transport</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <header>Daily Transport</header>
+
 <img class="page-img"
-  src=https://www.thestatesman.com/wp-content/uploads/2021/11/DMF-Schoool-Bus-for-Koira-Block-1.jpg  alt="Students using bus auto bike">
+  src="https://www.thestatesman.com/wp-content/uploads/2021/11/DMF-Schoool-Bus-for-Koira-Block-1.jpg"
+  alt="Students using bus auto bike">
 
 <div class="card">
 
-  <label>Mode of Transport</label>
-  <select id="mode">
-    <option value="0">Walking</option>
-    <option value="1">Bike</option>
-    <option value="2">Bus</option>
-    <option value="3">Auto</option>
-    <option value="4">Car</option>
+  <!-- 🚶 DID YOU TRAVEL -->
+  <label class="question-label">Did you travel today?</label>
+  <select id="travelToday" onchange="handleTravelChoice()">
+    <option value="">Select</option>
+    <option value="yes">Yes</option>
+    <option value="no">No</option>
   </select>
 
-  <label>Distance Travelled</label>
-  <select id="distance">
-    <option value="1">0–5 km</option>
-    <option value="2">5–10 km</option>
-    <option value="3">10–20 km</option>
-    <option value="4">20-100km</option>
-  </select>
+  <!-- 👇 SHOW ONLY IF NO -->
+  <button id="noTravelBtn"
+          style="display:none; margin-top:15px;"
+          onclick="saveNoTravel()">
+    View Dashboard
+  </button>
 
-  <label>Number of Trips</label>
-  <select id="trips">
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">More</option>
-  </select>
+  <!-- 🚗 TRANSPORT DETAILS -->
+  <div id="travelSection" style="display:none; margin-top:20px;">
 
-  <button type="button" onclick="saveTransport()">View Dashboard</button>
+    <label>Mode of Transport</label>
+    <select id="mode">
+      <option value="0">Walk/cycle</option>
+      <option value="0">metro</option>
+      <option value="1">Bike</option>
+      <option value="2">Bus</option>
+      <option value="3">Auto</option>
+      <option value="4">Car</option>
+    
+    </select>
+
+    <label>From Location</label>
+    <input type="text" id="from" placeholder="Enter starting location">
+
+    <label>To Location</label>
+    <input type="text" id="to" placeholder="Enter destination">
+
+    <label>Number of Trips</label>
+    <select id="trips">
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+
+    <button onclick="calculateDistance()">Calculate Distance</button>
+    <p id="distanceResult"></p>
+
+    <button onclick="saveTransport()">View Dashboard</button>
+  </div>
 
 </div>
 
+<!-- 🔥 FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyACroio1Xvsd24hYfwHI30XZH36uHexd9A",
+    authDomain: "carbon-emission-tracker-16f89.firebaseapp.com",
+    projectId: "carbon-emission-tracker-16f89",
+    storageBucket: "carbon-emission-tracker-16f89.appspot.com",
+    messagingSenderId: "784942251390",
+    appId: "1:784942251390:web:d2b5b61e79d03c528b072f"
+  };
+
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+
+  window.db = firebase.firestore();
+</script>
+
+<!-- 🌍 GOOGLE MAPS -->
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAS4IuRY-CZmB_UisRg55lc3pdXc0qBbA&libraries=places&callback=initAutocomplete"
+  async defer>
+</script>
+
+<!-- ✅ MAIN SCRIPT -->
 <script src="script.js"></script>
+
 </body>
 </html>

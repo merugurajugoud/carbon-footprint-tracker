@@ -1,56 +1,168 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Campus Carbon Reduction Platform</title>
+  <meta charset="UTF-8">
+  <title>Campus Carbon Tracker</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    body
+     {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    }
+
+    .page-wrapper {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 640px 1fr;
+      align-items: center;
+      gap: 60px;
+      padding: 50px 80px;
+    }
+
+    /* SIDE IMAGES */
+    .side-img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .side-img img {
+      width: 360px;
+      border-radius: 28px;
+      box-shadow: 0 28px 60px rgba(0,0,0,0.45);
+    }
+
+    /* CENTER CARD */
+    .landing-card {
+      background: rgba(255,255,255,0.97);
+      padding: 72px 66px;
+      border-radius: 34px;
+      text-align: center;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.35);
+    }
+
+    /* HERO TITLE */
+    .landing-title {
+      font-size: 46px;              /* ⬆ bigger & bolder */
+      font-weight: 800;
+      color: #0b5e2b;
+      margin-bottom: 24px;
+      letter-spacing: 0.8px;
+    }
+
+    .landing-subtitle {
+      font-size: 20px;              /* ⬆ clearer text */
+      color: #4a5568;
+      margin-bottom: 52px;
+      line-height: 1.8;
+    }
+
+    .landing-btn {
+      width: 100%;
+      padding: 18px;
+      margin: 18px 0;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 16px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .primary {
+      background: linear-gradient(135deg, #1b5e20, #2e7d32);
+      color: #ffffff;
+      box-shadow: 0 16px 32px rgba(46,125,50,0.45);
+    }
+
+    .primary:hover {
+      transform: translateY(-3px);
+    }
+
+    .secondary {
+      background: #f1f5f3;
+      color: #1b5e20;
+      border: 2px solid #c8e6c9;
+    }
+
+    .secondary:hover {
+      background: #e3f2e8;
+    }
+
+    .footer-text {
+      margin-top: 50px;
+      font-size: 18px;              /* ⬆ more visible */
+      font-weight: 500;
+      color: #5f6f81;
+      letter-spacing: 0.4px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1200px) {
+      .page-wrapper {
+        grid-template-columns: 1fr;
+        padding: 40px;
+      }
+      .side-img {
+        display: none;
+      }
+      .landing-card {
+        max-width: 640px;
+        margin: auto;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header>Campus Carbon Reduction & Awareness Platform</header>
+<div class="page-wrapper">
 
-<section class="hero">
-  <h1>Reducing Campus Carbon, One Step at a Time</h1>
-  <p>
-    College campuses generate carbon emissions through daily electricity usage,
-    transportation, and events. This platform helps students understand
-    where emissions come from and how small daily actions can reduce
-    overall carbon impact.
-  </p>
-
-  <p class="theory">
-    By following simple energy-saving practices and sustainable transport choices,
-    students can significantly reduce campus carbon emissions over time.
-  </p>
-
-  <a class="btn" href="daily.html">Begin Carbon Awareness</a>
-</section>
-
-<section class="image-row">
-
-  <!-- ELECTRICITY -->
-  <div class="image-card">
-    <img
-      src="https://robots.net/wp-content/uploads/2020/09/Charging-Fixes-for-Windows-and-Mac.jpg"
-      alt="Electricity usage">
-    <p>Electricity Usage</p>
+  <!-- LEFT IMAGE -->
+  <div class="side-img">
+    <img src="https://tse4.mm.bing.net/th/id/OIP.VB3Q_1fVdQ-kgJO0TJQcSgHaHa?pid=Api&P=0&h=180"
+         alt="CO2 Reduction">
   </div>
 
-  <!-- DAILY TRANSPORT -->
-  <div class="image-card">
-    <img
-      src=https://tse3.mm.bing.net/th/id/OIP.4Zd0XtyPkZqaHlCebnSTAgHaEi?pid=Api&P=0&h=180 alt="Daily transport bus auto bike">
-    <p>Daily Transport</p>
+  <!-- CENTER CARD -->
+  <div class="landing-card">
+
+    <div class="landing-title">
+      Campus Carbon Tracker
+    </div>
+
+    <div class="landing-subtitle">
+      Monitor daily carbon emissions from electricity, transport,
+      and events to help your campus move towards a smarter and
+      more sustainable future.
+    </div>
+
+    <button class="landing-btn primary"
+            onclick="window.location.href='indx.html'">
+      Login
+    </button>
+
+    <button class="landing-btn secondary"
+            onclick="window.location.href='signup.html'">
+      Create New Account
+    </button>
+
+    <div class="footer-text">
+      Small actions today can build a cleaner tomorrow
+    </div>
+
   </div>
 
-  <!-- CAMPUS EVENTS -->
-  <div class="image-card">
-    <img
-      src="https://tse1.mm.bing.net/th/id/OIP.pZsEX5wqPd6Tq7zhrUksfwHaEa?pid=Api&P=0&h=180"
-      alt="Campus event auditorium">
-    <p>Campus Events</p>
+  <!-- RIGHT IMAGE -->
+  <div class="side-img">
+    <img src="https://tse3.mm.bing.net/th/id/OIP.WFaHXCmpS2cEmTYXRpv_dgHaEC?pid=Api&P=0&h=180"
+         alt="Green Technology">
   </div>
 
-</section>
+</div>
 
 </body>
 </html>

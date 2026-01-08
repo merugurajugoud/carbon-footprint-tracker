@@ -7,11 +7,53 @@
 <body>
 
 <header>Personalized Carbon Reduction Tip</header>
-
+<div>
 <div class="suggestion-row" id="suggestionBox">
   <!-- JS will insert ONLY the relevant suggestion -->
+
 </div>
 
-<script src="script.js"></script>
+</div>
+<script type="module" src="script.js"></script>
+<div class="home-btn-container">
+   <button class="btn" onclick="askGemini()">
+  Ask Gemini for Personalized Tips  
+</button>
+</div>
+
+<script>
+  function goHome() {
+    window.location.href = "index1.html";
+  }
+  function askGemini() {
+  const electricity = Number(localStorage.getItem("electricity") || 0);
+  const transport = Number(localStorage.getItem("transport") || 0);
+  const events = Number(localStorage.getItem("events") || 0);
+
+  const total = electricity + transport + events;
+
+  const prompt = `
+I am a college student.
+
+Today my carbon usage summary:
+- Electricity impact: ${electricity}
+- Transport impact: ${transport}
+- Events impact: ${events}
+- Total carbon usage: ${total}
+
+Please suggest:
+1. How I can reduce my carbon impact for the rest of today
+2. What habits I should follow tomorrow
+3. Sustainable alternatives suitable for a college campus
+`;
+
+  navigator.clipboard.writeText(prompt).then(() => {
+    alert("Your carbon summary has been copied. Paste it into Gemini to get personalized suggestions.");
+    window.open("https://gemini.google.com/app", "_blank");
+  });
+}
+</script>
+
+
 </body>
 </html>
