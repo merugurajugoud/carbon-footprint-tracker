@@ -1180,5 +1180,33 @@ input:focus {
   color: #ffffff;
   transform: translateX(-6px);
 }
+/* ===== UNIFORM BUTTON SIZE FOR ALL PAGES ===== */
+button,
+.primary-btn,
+.btn,
+.begin-btn {
+  min-width: 220px;            /* 🔥 same width */
+  padding: 16px 28px;          /* 🔥 same height */
+  font-size: 17px;             /* 🔥 same text size */
+  font-weight: 700;
+  border-radius: 14px;
+  background: #2e7d32;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+
+  box-shadow: 0 10px 25px rgba(46,125,50,0.35);
+  transition: all 0.25s ease;
+}
+
+/* Hover animation */
+button:hover,
+.primary-btn:hover,
+.btn:hover,
+.begin-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(46,125,50,0.45);
+}
+
 
 
