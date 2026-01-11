@@ -517,3 +517,35 @@ function forgotPassword() {
     });
 }
 
+function updateFinalStarRating(totalCarbon) {
+  let stars = "";
+  let message = "";
+
+  if (totalCarbon < 5) {
+    stars = "⭐⭐⭐⭐⭐";
+    message = "Low carbon usage 🌱 Excellent job!";
+  } 
+  else if (totalCarbon === 5) {
+    stars = "⭐⭐⭐";
+    message = "Medium carbon usage 🙂 Can improve.";
+  } 
+  else {
+    stars = "⭐";
+    message = "High carbon usage ⚠️ Please reduce emissions.";
+  }
+
+  const starEl = document.getElementById("starRating");
+  const msgEl = document.getElementById("rewardMsg");
+
+  if (starEl) starEl.innerText = stars;
+  if (msgEl) msgEl.innerText = message;
+}
+document.addEventListener("DOMContentLoaded", () => {
+  const electricity = Number(localStorage.getItem("electricity") || 0);
+  const transport   = Number(localStorage.getItem("transport") || 0);
+  const events      = Number(localStorage.getItem("events") || 0);
+
+  const totalCarbon = electricity + transport + events;
+
+  updateFinalStarRating(totalCarbon);
+});

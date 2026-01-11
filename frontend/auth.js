@@ -2,7 +2,7 @@
    FIREBASE CONFIG
 ===================== */
 const firebaseConfig = {
-  apiKey: "AIzaSyACroio1Xvsd24hYfwHI30XZH36uHexd9A",
+  apiKey: "YOUR_API_KEY",
   authDomain: "carbon-emission-tracker-16f89.firebaseapp.com",
   projectId: "carbon-emission-tracker-16f89",
   storageBucket: "carbon-emission-tracker-16f89.appspot.com",
@@ -123,3 +123,7 @@ function createAccount() {
 ===================== */
 window.login = login;
 window.createAccount = createAccount;
+function logout() {
+  localStorage.removeItem("loggedIn");
+  window.location.href = "indx.html";
+}

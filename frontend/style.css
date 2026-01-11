@@ -1198,6 +1198,81 @@ button,
   box-shadow: 0 10px 25px rgba(46,125,50,0.35);
   transition: all 0.25s ease;
 }
+/* ===== AUTH PAGE WRAPPER ===== */
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+/* ===== CARD SIZE INCREASE ===== */
+.auth-card {
+  width: 520px;              /* ⬆ bigger card */
+  padding: 60px 50px;        /* ⬆ more space */
+  background: white;
+  border-radius: 28px;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+}
+
+/* ===== HEADING ===== */
+.auth-card h2 {
+  font-size: 36px;           /* ⬆ bigger heading */
+  font-weight: 800;
+  color: #0b5e2b;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* ===== LABELS ===== */
+.auth-card label {
+  font-size: 16px;           /* ⬆ readable */
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* ===== INPUT FIELDS ===== */
+.auth-card input {
+  width: 100%;
+  height: 54px;              /* ⬆ BIG input */
+  padding: 0 16px;
+  font-size: 16px;
+  border-radius: 14px;
+  border: 1.5px solid #cbd5e0;
+  margin-bottom: 26px;
+  outline: none;
+}
+
+/* Focus effect (real website feel) */
+.auth-card input:focus {
+  border-color: #2e7d32;
+  box-shadow: 0 0 0 3px rgba(46,125,50,0.2);
+}
+
+/* ===== BUTTON ===== */
+.auth-card button {
+  width: 100%;
+  height: 56px;              /* ⬆ bigger button */
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.auth-card button:hover {
+  transform: translateY(-2px);
+}
+.auth-card h2 {
+  margin-top: 0;          /* ⬅️ THIS is important */
+  padding-top: 0;
+}
 
 /* Hover animation */
 button:hover,
@@ -1207,6 +1282,511 @@ button:hover,
   transform: translateY(-2px);
   box-shadow: 0 14px 30px rgba(46,125,50,0.45);
 }
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+.reward-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 25px 0;
+}
+
+.reward-card {
+  background: white;
+  padding: 20px 25px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 420px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.stars {
+  font-size: 28px;
+  color: gold;
+  margin: 10px 0;
+}
+
+.reward-msg {
+  font-size: 15px;
+  color: #2f3e46;
+}
+.reward-points {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1b5e20;
+  margin-top: 8px;
+}
+
+.center-btn {
+  display: inline-block;
+  padding: 16px 42px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 40px;
+  background: linear-gradient(135deg, #2e7d32, #43a047);
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(46, 125, 50, 0.35);
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+/* 🔥 HOVER EFFECT */
+.center-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 16px 35px rgba(46, 125, 50, 0.55);
+  background: linear-gradient(135deg, #1b5e20, #66bb6a);
+}.cta-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 25px 0 40px 0;
+}
 
 
+/* ===============================
+   TRANSPORT PAGE FIXES
+=============================== */
 
+/* Page image */
+.page-img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 0 0 20px 20px;
+  margin-bottom: 20px;
+}
+
+/* Card container */
+.card {
+  max-width: 420px;
+  margin: -40px auto 30px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  overflow: visible !important; /* 🔥 IMPORTANT for dropdown */
+}
+
+/* Labels */
+.card label,
+.question-label {
+  font-weight: 600;
+  margin-top: 15px;
+  display: block;
+  color: #2f3e46;
+}
+
+/* Inputs & selects */
+.card input,
+.card select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+/* Buttons */
+.card button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 14px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #2e7d32, #43a047);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(46,125,50,0.4);
+}
+
+/* Distance text */
+#distanceResult {
+  margin-top: 10px;
+  font-weight: 500;
+  color: #1b5e20;
+}
+
+/* ===============================
+   GOOGLE MAPS DROPDOWN FIX
+=============================== */
+
+/* 🔥 THIS IS THE MAIN FIX */
+.pac-container {
+  position: absolute !important;
+  z-index: 2147483647 !important; /* max possible */
+}
+
+
+/* Prevent clipping */
+body,
+html {
+  overflow-x: hidden;
+}
+
+/* Travel section spacing */
+#travelSection {
+  overflow: visible !important;
+}
+html, body {
+  position: relative !important;
+  overflow-x: hidden;
+}
+input#from,
+input#to {
+  position: relative;
+  z-index: 1;
+}
+.card,
+#travelSection {
+  overflow: visible !important;
+  position: relative;
+}
+.card {
+  margin-top: 80px !important;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1b5e20;
+  padding: 12px 25px;
+}
+
+.logo {
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 6px 10px;
+  border-radius: 5px;
+}
+
+.nav-links li a:hover {
+  background-color: #2e7d32;
+}
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* NAVBAR */
+/* NAVBAR FIXED & HORIZONTAL */
+.navbar {
+  position: fixed;        /* arrow daggara raavali */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+
+  background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 50px;
+  z-index: 1000;          /* hero paina undali */
+}
+
+/* LOGO */
+.logo {
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* NAV LINKS HORIZONTAL */
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* LOGIN BUTTON */
+.login-btn {
+  background-color: #4caf50;
+  font-weight: bold;
+}
+
+.login-btn:hover {
+  background-color: #43a047;
+}
+#top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+
+  background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 50px;
+  z-index: 9999;
+  margin-top:0;
+  margin-bottom:0;
+}
+
+.nav-logo {
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.nav-menu a:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.nav-menu .login {
+  background: #4caf50;
+  font-weight: bold;
+}
+
+.nav-menu .login:hover {
+  background: #43a047;
+}
+
+/* PUSH PAGE CONTENT DOWN */
+body {
+  padding-top: 70px;
+}
+.nav-menu {
+  display: flex;
+  gap: 12px; /* 👈 koncham gap */
+  background: rgba(255,255,255,0.12);
+  padding: 8px;
+  border-radius: 14px;
+}
+
+.nav-item {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  transition: 0.3s;
+  background: rgba(255,255,255,0.15);
+}
+
+/* Hover effect */
+.nav-item:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+/* Login special */
+.nav-item.login {
+  background: #4caf50;
+  font-weight: bold;
+}
+
+.nav-item.login:hover {
+  background: #43a047;
+}
+/* NAV MENU BOX STYLE */
+.nav-menu {
+  display: flex;
+  gap: 10px;
+  background: rgba(255,255,255,0.12);
+  padding: 6px;
+  border-radius: 14px;
+}
+
+.nav-item {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.18);
+  transition: 0.3s ease;
+}
+
+.nav-item:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+/* ACTIVE PAGE */
+.nav-item.active {
+  background: white;
+  color: #1e7f43;
+  font-weight: bold;
+}
+
+/* LOGIN BUTTON */
+.nav-item.login {
+  background: #4caf50;
+  font-weight: bold;
+}
+
+.nav-item.login:hover {
+  background: #43a047;
+}
+/* NAVBAR BELOW HEADING */
+#top-navbar {
+  background: #e8f5e9;
+  display: flex;
+  justify-content: center;
+  padding: 14px 0;
+  margin-top: 20000px;   /* 👈 koncham kindaki jarugutundi */
+}
+
+
+/* MENU BOX */
+.nav-menu {
+  display: flex;
+  gap: 14px;
+  background: #c8e6c9;
+  padding: 10px 14px;
+  border-radius: 14px;
+}
+
+/* MENU ITEMS */
+.nav-item {
+  text-decoration: none;
+  color: #1b5e20;
+  font-size: 15px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: #e8f5e9;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.nav-item:hover {
+  background: #a5d6a7;
+}
+
+/* ACTIVE */
+.nav-item.active {
+  background: #1b5e20;
+  color: white;
+}
+
+/* LOGIN */
+.nav-item.login {
+  background: #2e7d32;
+  color: white;
+}
+.nav-menu {
+  padding-bottom: 8px;
+}
+/* LOGIN PAGE FIX */
+.login-page {
+  margin: 0;
+  padding: 0;
+}
+
+.login-page .hero-banner,
+.login-page #top-navbar {
+  display: none;
+}
+/* Image kinda extra space remove */
+.image-section img,
+.image-card img {
+  margin-bottom: 0;
+  display: block;
+}
+
+/* Image section padding reduce */
+.image-section {
+  padding-bottom: 20px;   /* reduce from big value */
+}
+
+/* Form / card paiki jaragali */
+.form-card,
+.card,
+.content-card {
+  margin-top: 10px;   /* before: 40px / 60px undochu */
+}
+/* Only selected pages ki scrollbar */
+.scroll-page {
+  height: 100vh;
+  overflow-y: auto;
+}
+/* 🔥 GLOBAL RESET – removes ugly top space */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+.back-home {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.back-home a {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #1b5e20;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.back-home a:hover {
+  background: #2e7d32;
+}
