@@ -2,7 +2,7 @@
    FIREBASE CONFIG
 ===================== */
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
+  apiKey: "AIzaSyACroio1Xvsd24hYfwHI30XZH36uHexd9A",
   authDomain: "carbon-emission-tracker-16f89.firebaseapp.com",
   projectId: "carbon-emission-tracker-16f89",
   storageBucket: "carbon-emission-tracker-16f89.appspot.com",
